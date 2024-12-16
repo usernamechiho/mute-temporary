@@ -1,5 +1,6 @@
 import "./_css/global.css";
 import SideNavigation from "./_modules/_components/SideNavigation";
+import { ThemeProvider } from "./_modules/_components/ThemeProvider";
 
 export default function Layout({
   children,
@@ -8,10 +9,18 @@ export default function Layout({
 }>) {
   return (
     <html>
-      <body className="flex px-2">
-        <SideNavigation />
-
-        {children}
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex px-4">
+            <SideNavigation />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
